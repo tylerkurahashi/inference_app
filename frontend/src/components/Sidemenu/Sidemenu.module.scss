@@ -1,0 +1,44 @@
+.sideMenu_wrapper {
+  float: left;
+  width: 25%;
+  min-width: 100px;
+  max-width: 200px;
+  margin-left: 0;
+
+
+  .sideMenu {
+    min-height: 100vh;
+    margin-top: 1vh;
+    text-align: center;
+    
+    h2 {
+      margin: 0.75vh 0;
+      font-size: 20px;
+    }
+
+    a {
+      display: block;
+      color: #4a4a4a;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    ul {
+      display: block;
+      li {
+        margin: 0.75vh 0;
+        list-style: none;
+
+        a {
+          display: block;
+          color: #4a4a4a;
+          text-decoration: none;
+          width: 100%;
+        }
+      }
+      li:hover {
+        background-color: #c8d3e2;
+      }
+    }
+  }
+}
