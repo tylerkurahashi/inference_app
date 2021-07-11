@@ -1,11 +1,15 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link, BrowserRouter } from 'react-router-dom';
+
+import styles from './OtherModels.module.scss';
 
 const otherModelList: string[] = ['aaa', 'bbb'];
 
 const OtherModels = () => {
-  const onClick = (e: any) => {
-    console.log('Clicked');
+  const [isActive, setIsActive] = useState(false);
+  const onClick = () => {
+    isActive ? setIsActive(false) : setIsActive(true);
   };
 
   return (
@@ -13,17 +17,19 @@ const OtherModels = () => {
       <a onClick={onClick}>
         <b>Other Models</b>
       </a>
-      <ul>
-        <BrowserRouter>
-          {otherModelList.map((model: string) => (
-            <li>
-              <Link to={'/other/' + model} onClick={onClick}>
-                {model}
-              </Link>
-            </li>
-          ))}
-        </BrowserRouter>
-      </ul>
+      <div className={!isActive ? styles.is_inactive : ''}>
+        <ul>
+          <BrowserRouter>
+            {otherModelList.map((model: string) => (
+              <li>
+                <Link to={'/other/' + model} onClick={onClick}>
+                  {model}
+                </Link>
+              </li>
+            ))}
+          </BrowserRouter>
+        </ul>
+      </div>
     </div>
   );
 };

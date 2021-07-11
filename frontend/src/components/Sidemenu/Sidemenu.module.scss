@@ -5,11 +5,12 @@
   max-width: 200px;
   margin-left: 0;
 
-
   .sideMenu {
+    display: block;
     min-height: 100vh;
     margin-top: 1vh;
     text-align: center;
+    transition: 1s;
     
     h2 {
       margin: 0.75vh 0;
@@ -40,5 +41,8 @@
         background-color: #c8d3e2;
       }
     }
+  }
+  .is_inactive {
+    display: none;
   }
 }
