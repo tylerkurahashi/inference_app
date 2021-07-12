@@ -9,7 +9,7 @@ const Button = (props:any) => {
   }
   return (
     <div onClick={onClick}  className={styles.button}>
-      <span>{!isActive ? 'Hide <' : 'Display >'}</span>
+      <span>{!isActive ? 'Hide Menu <' : 'Display Menu>'}</span>
     </div>
   )
 }

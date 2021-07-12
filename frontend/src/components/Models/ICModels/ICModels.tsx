@@ -19,15 +19,13 @@ const ICModels = () => {
       </a>
       <div className={!isActive ? styles.is_inactive : ''}>
         <ul>
-          <BrowserRouter>
-            {icModelList.map((model: string) => (
-              <li>
-                <Link to={'/ic/' + model} onClick={onClick}>
-                  {model}
-                </Link>
-              </li>
-            ))}
-          </BrowserRouter>
+          {icModelList.map((model: string) => (
+            <li>
+              <Link to={'/ic/' + model} onClick={onClick}>
+                {model}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
