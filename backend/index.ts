@@ -1,13 +1,12 @@
-import express from 'express';
+import express, { Request, Response, NextFunction, Router } from 'express';
 import AIModel from './models/AIModel';
 import connectDB from './mongo/db';
 
 const app: express.Express = express();
 
-connectDB()
+connectDB();
 
-
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
@@ -19,16 +18,16 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const router: express.Router = express.Router();
+const router: Router = Router();
 
-router.get('/home', async (req: express.Request, res: express.Response) => {
+router.get('/home', async (req: Request, res: Response) => {
   const aimodels = await AIModel.find({});
   res.send(aimodels);
 });
 
 router.post(
   '/models/:type/:name',
-  (req: express.Request, res: express.Response) => {
+  (req: Request, res: Response) => {
     res.send(req.params);
   }
 );
