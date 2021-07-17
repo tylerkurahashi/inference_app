@@ -1,17 +1,22 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AIModels from '../../../interfaces/AIModels';
 
 import styles from './ODModels.module.scss';
 
 const odModelList: string[] = ['aaa', 'bbb'];
 
-const ODModels = () => {
+const ODModels = (props: any) => {
   const [isActive, setIsActive] = useState(false);
-  const onClick = (e:any) => {
-    e.preventDefault()
+  const onClick = (e: any) => {
+    e.preventDefault();
     isActive ? setIsActive(false) : setIsActive(true);
   };
+
+  const odModelList: string[] | null = !props.models
+    ? null
+    : props.models.map((element: AIModels) => element.name);
 
   return (
     <div>
@@ -20,13 +25,14 @@ const ODModels = () => {
       </a>
       <div className={!isActive ? styles.is_inactive : ''}>
         <ul>
-          {odModelList.map((model: string) => (
-            <li key={model}>
-              <Link to={'/od/' + model} onClick={onClick}>
-                {model}
-              </Link>
-            </li>
-          ))}
+          {odModelList &&
+            odModelList.map((model: string) => (
+              <li key={model}>
+                <Link to={'/od/' + model} onClick={onClick}>
+                  {model}
+                </Link>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

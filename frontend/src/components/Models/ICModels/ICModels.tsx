@@ -1,16 +1,18 @@
-import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AIModels from '../../../interfaces/AIModels';
 
 import styles from './ICModels.module.scss';
 
-const icModelList: string[] = ['aaa', 'bbb'];
-
-const ICModels = () => {
+const ICModels = (props: any) => {
   const [isListActive, setIsListActive] = useState(false);
   const onClick = () => {
     isListActive ? setIsListActive(false) : setIsListActive(true);
   };
+
+  const icModelList: string[] | null = !props.models
+    ? null
+    : props.models.map((element: AIModels) => element.name);
 
   return (
     <div>
@@ -19,13 +21,14 @@ const ICModels = () => {
       </a>
       <div className={!isListActive ? styles.is_inactive : ''}>
         <ul>
-          {icModelList.map((model: string) => (
-            <li key={model}>
-              <Link to={'/ic/' + model} onClick={onClick}>
-                {model}
-              </Link>
-            </li>
-          ))}
+          {icModelList &&
+            icModelList.map((model: string) => (
+              <li key={model}>
+                <Link to={'/ic/' + model} onClick={onClick}>
+                  {model}
+                </Link>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

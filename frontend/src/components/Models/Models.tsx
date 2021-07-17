@@ -19,13 +19,21 @@ const ModelsList = () => {
     ? null
     : aimodels.filter((obj: any) => obj.type === 'ic');
 
+  const odmodels: AIModels[] | null = !aimodels
+    ? null
+    : aimodels.filter((obj: any) => obj.type === 'od');
+
+  const otherModels: AIModels[] | null = !aimodels
+    ? null
+    : aimodels.filter((obj: any) => obj.type === 'other');
+
   console.log(icmodels);
 
   return (
     <React.Fragment>
-      <ICModels />
-      <ODModels />
-      <OtherModels />
+      <ICModels models={icmodels} />
+      <ODModels models={odmodels} />
+      <OtherModels models={otherModels} />
     </React.Fragment>
   );
 };
