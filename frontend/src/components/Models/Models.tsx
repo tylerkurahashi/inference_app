@@ -7,12 +7,7 @@ import ODModels from './ODModels/ODModels';
 import OtherModels from './OtherModels/OtherModels';
 
 const ModelsList = () => {
-  const { isLoading, data } = useFetch('http://localhost:3000/home');
-  if (isLoading) {
-    console.log(isLoading);
-  }
-
-  console.log(data);
+  const { data } = useFetch('http://localhost:3000/home');
 
   const aimodels: any = data;
   const icmodels: AIModels[] | null = !aimodels
@@ -26,8 +21,6 @@ const ModelsList = () => {
   const otherModels: AIModels[] | null = !aimodels
     ? null
     : aimodels.filter((obj: any) => obj.type === 'other');
-
-  console.log(icmodels);
 
   return (
     <React.Fragment>

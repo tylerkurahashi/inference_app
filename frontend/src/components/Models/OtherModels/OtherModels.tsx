@@ -1,11 +1,8 @@
-import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AIModels from '../../../interfaces/AIModels';
 
 import styles from './OtherModels.module.scss';
-
-const otherModelList: string[] = ['aaa', 'bbb'];
 
 const OtherModels = (props: any) => {
   const [isActive, setIsActive] = useState(false);
