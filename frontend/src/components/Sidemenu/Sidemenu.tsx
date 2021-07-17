@@ -2,18 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 
 import styles from './Sidemenu.module.scss';
-import ICModels from '../Models/ICModels/ICModels';
-import ODModels from '../Models/ODModels/ODModels';
-import OtherModels from '../Models/OtherModels/OtherModels';
+import ModelsList from '../Models/Models';
 import Button from './Button/Button';
 
 const Sidemenu = () => {
-  const [isMenuActive, setIsMenuActive] = useState(true)
+  const [isMenuActive, setIsMenuActive] = useState(true);
 
-  const isMenuDisplayed = (isActive:boolean) => {
-    setIsMenuActive(isActive)
-  }
-
+  const isMenuDisplayed = (isActive: boolean) => {
+    setIsMenuActive(isActive);
+  };
+  
   return (
     <div className={styles.sideMenu_wrapper}>
       <Button isMenuDisplayed={isMenuDisplayed} />
@@ -21,9 +19,7 @@ const Sidemenu = () => {
         <h2>
           <b>Model List</b>
         </h2>
-        <ICModels  />
-        <ODModels  />
-        <OtherModels />
+        <ModelsList />
       </div>
     </div>
   );
